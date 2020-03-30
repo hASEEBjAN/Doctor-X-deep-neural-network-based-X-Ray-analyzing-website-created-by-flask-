@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+	<h1 class="ui header">{{ title }}</h1>
+
+	{% if current_user.is_authenticated %}
+	  	<h1 class="ui header">Hi {{ current_user.full_name }}!</h1>
+	{% endif %}
+	<h2>Name: Faisal Shah <br>
+	Roll # 150397 </h2>
+
+{% endblock %}

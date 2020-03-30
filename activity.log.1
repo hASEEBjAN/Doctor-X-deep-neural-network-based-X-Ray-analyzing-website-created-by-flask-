@@ -1,0 +1,68 @@
+Exception on /user/signout [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/engine/base.py", line 1249, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/engine/default.py", line 580, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: users
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/e/Project/website/app/views/user.py", line 93, in signout
+    logout_user()
+  File "/usr/local/lib/python3.6/dist-packages/flask_login.py", line 731, in logout_user
+    user = _get_user()
+  File "/usr/local/lib/python3.6/dist-packages/flask_login.py", line 858, in _get_user
+    current_app.login_manager._load_user()
+  File "/usr/local/lib/python3.6/dist-packages/flask_login.py", line 389, in _load_user
+    return self.reload_user()
+  File "/usr/local/lib/python3.6/dist-packages/flask_login.py", line 351, in reload_user
+    user = self.user_callback(user_id)
+  File "/mnt/e/Project/website/app/__init__.py", line 44, in load_user
+    return User.query.filter(User.email == email).first()
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/orm/query.py", line 3240, in first
+    ret = list(self[0:1])
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/orm/query.py", line 3018, in __getitem__
+    return list(res)
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/orm/query.py", line 3342, in __iter__
+    return self._execute_and_instances(context)
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/orm/query.py", line 3367, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/engine/base.py", line 1253, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/engine/base.py", line 1473, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/util/compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/util/compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/engine/base.py", line 1249, in _execute_context
+    cursor, statement, parameters, context
+  File "/usr/local/lib/python3.6/dist-packages/sqlalchemy/engine/default.py", line 580, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.first_name AS users_first_name, users.last_name AS users_last_name, users.phone AS users_phone, users.email AS users_email, users.confirmation AS users_confirmation, users.paid AS users_paid, users._password AS users__password 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('asd@asd.com', 1, 0)]
+(Background on this error at: http://sqlalche.me/e/e3q8)

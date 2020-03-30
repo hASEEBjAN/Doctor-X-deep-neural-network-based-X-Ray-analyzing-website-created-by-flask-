@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+<br>
+	<img src="{{ url_for('static', filename='upload/'+user_image) }}">
+
+					
+					<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Results</h2>
+
+<table>
+  <tr>
+    <th>Bone Selected</th>
+    <th>Broke Percent Likelihood</th>
+    <th>Diagnose</th>
+    <th>Filename</th>
+  </tr>
+  <tr>
+    <td>{{type_image}}</td>
+    <td>{{predictions[0][0]}}</td>
+    <td>{{diagnose}}</td>
+    <td>{{user_image}}</td>
+  </tr>
+</table>
+
+		<center>
+  		<h2><font color='white'>Please upload your image below</font></h2>
+  		<form action = "http://localhost:5000/uploaded" method = "POST" 
+         		 enctype = "multipart/form-data">
+         		 <input type = "file" name = "file" /><br>
+	       		 <input type = "radio" name = "selectmodel" value = "Elbow"> Elbow <br>
+			 <input type = "radio" name = "selectmodel" value = "Hand"> Hand <br>
+			 <input type = "radio" name = "selectmodel" value = "Finger"> Finger <br>
+         		 <input type = "submit"/>
+      		</form>
+		</center>
+
+
+
+{% endblock %}

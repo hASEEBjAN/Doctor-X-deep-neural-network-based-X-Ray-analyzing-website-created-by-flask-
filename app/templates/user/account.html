@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+<center>
+    	<h1 class="ui header">Hi {{ current_user.full_name }}!</h1>
+  	<h2><font color='white'>Please upload your image below</font></h2>
+ 	<img src="{{ url_for('static', filename='img/upload.png') }}"></center>
+
+  	<form action = "http://localhost:5000/uploaded" method = "POST" 
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" /> <br>
+	 <input type = "radio" name = "selectmodel" value = "Elbow"> Elbow <br>
+	 <input type = "radio" name = "selectmodel" value = "Hand"> Hand <br>
+	 <input type = "radio" name = "selectmodel" value = "Finger"> Finger <br>
+         <input type = "submit"/>
+      </form>
+</center>
+{% endblock %}
