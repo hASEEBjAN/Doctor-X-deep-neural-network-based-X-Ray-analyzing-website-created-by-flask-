@@ -57,11 +57,11 @@ I did what most people recommend for the application's structure. Basically, eve
 
 - Create the database.
 
-	`python manage.py initdb`
+	`python3 manage.py initdb`
 
 - Run the application.
 
-	`python manage.py runserver`
+	`python3 manage.py runserver`
 
 - Navigate to `localhost:5000`.
 
